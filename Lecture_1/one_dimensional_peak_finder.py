@@ -1,35 +1,42 @@
-def One_D_Peak_Finder(arr):
-    '''This is a one-dimensional pek finder function'''
+def One_D_Peak_Finder(arr, start=0, end=None):
+    if end is None:
+        end = len(arr)
 
-    if len(arr) == 1:
-        return arr[0]
-    
-    elif len(arr) == 2:
-        if arr[0] > arr[1]:
-            return arr[0]
+    n = end - start
 
+    if n == 1:
+        return arr[start]
+
+    elif n == 2:
+        if arr[start] > arr[start + 1]:
+            return arr[start]
         else:
-            return arr[1]    
+            return arr[start + 1]
+
     else:
-        if len(arr) % 2 == 0:
-            if arr[len(arr)//2 - 1] < arr[len(arr)//2 - 2]:
-                return One_D_Peak_Finder(arr[:len(arr)//2 - 1])
-                
-            elif arr[len(arr)//2 - 1] < arr[len(arr)//2]:
-                return One_D_Peak_Finder(arr[len(arr)//2:])
+        if n % 2 == 0:
+            mid = start + n // 2 - 1
+
+            if arr[mid] < arr[mid - 1]:
+                return One_D_Peak_Finder(arr, start, mid)
+
+            elif arr[mid] < arr[mid + 1]:
+                return One_D_Peak_Finder(arr, mid + 1, end)
 
             else:
-                return arr[len(arr)//2 - 1]
-            
+                return arr[mid]
+
         else:
-            if arr[(len(arr) + 1)//2 - 1] < arr[(len(arr) + 1)//2 - 2]:
-                return One_D_Peak_Finder(arr[:(len(arr) + 1)//2])
-            
-            elif arr[(len(arr) + 1)//2 - 1] < arr[(len(arr) + 1)//2]:
-                return One_D_Peak_Finder(arr[(len(arr) + 1)//2:])
-            
+            mid = start + (n + 1) // 2 - 1
+
+            if arr[mid] < arr[mid - 1]:
+                return One_D_Peak_Finder(arr, start, mid + 1)
+
+            elif arr[mid] < arr[mid + 1]:
+                return One_D_Peak_Finder(arr, mid + 1, end)
+
             else:
-                return arr[(len(arr) + 1)//2 - 1]
+                return arr[mid]
             
 
 #following are a few test cases showing that this algorithm returns a peak            
