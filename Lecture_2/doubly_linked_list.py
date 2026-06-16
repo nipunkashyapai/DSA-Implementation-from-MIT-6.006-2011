@@ -66,8 +66,8 @@ class doubly_linked_list(object):
         self.head.prev = None
 
     def delete_last(self):
-        self.last = self.last.prev
-        self.last.next = None
+        self.tail = self.tail.prev
+        self.tail.next = None
 
     def display(self):
         current = self.head
