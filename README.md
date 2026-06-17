@@ -18,3 +18,19 @@ Learning algorithms and Data Structures by coding them from scratch and document
 
 \-Asymptotic Analysis
 
+
+
+### Lecture 2:-
+
+\-Linked Lists were briefly introduced
+
+\-Document Distance Problem
+
+
+
+### Lecture 3:-
+
+\-Insertion Sort
+
+\-Merge Sort
+
